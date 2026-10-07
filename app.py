@@ -20,8 +20,16 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 FLAG_PATH = os.path.join(BASE_DIR, "flag.txt")
 
 app = Flask(__name__)
-app.secret_key = os.urandom(24)  # session signing only — not part of the challenge
-
+if os.environ.get("VERCEL"):
+    app.secret_key = os.environ["SECRET_KEY"]
+else:
+    app.secret_key = os.environ.get(
+        "SECRET_KEY",
+        "local-development-secret"
+    )
+    
+if not os.path.exists(DB_PATH):
+    init_db()
 
 def get_db():
     conn = sqlite3.connect(DB_PATH)
