@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RED ACCESS :: admin</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">■ RED ACCESS</div>
+      <div class="sub">ADMIN CONSOLE</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-bar">
+        <div class="dot"></div><div class="dot"></div><div class="dot r"></div>
+        <span>session://admin</span>
+      </div>
+      <div class="panel-body">
+        <div class="ok">authenticated as <b>{{ username }}</b> (role: admin)</div>
+        <div class="prompt-line"><b>&gt;</b> login bypassed. root console reached.</div>
+
+        <label>flag.txt</label>
+        <div class="flag-box">{{ flag }}</div>
+
+        <div class="meta" style="margin-top:14px;"><a href="{{ url_for('logout') }}">↩ log out</a></div>
+      </div>
+    </div>
+
+    <div class="foot">RED ACCESS CTF — local challenge build</div>
+  </div>
+</body>
+</html>

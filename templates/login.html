@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RED ACCESS :: login</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <div class="mark">■ RED ACCESS</div>
+      <div class="sub">AUTHENTICATION TERMINAL</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-bar">
+        <div class="dot"></div><div class="dot"></div><div class="dot r"></div>
+        <span>session://login</span>
+      </div>
+      <div class="panel-body">
+        <div class="prompt-line"><b>&gt;</b> enter credentials to reach the internal console</div>
+
+        {% if error %}
+          <div class="error">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" action="{{ url_for('login') }}" autocomplete="off">
+          <div class="field">
+            <label for="username">username</label>
+            <input type="text" id="username" name="username" placeholder="guest" autofocus>
+          </div>
+          <div class="field">
+            <label for="password">password</label>
+            <input type="password" id="password" name="password" placeholder="••••••••">
+          </div>
+          <button type="submit">AUTHENTICATE</button>
+        </form>
+
+        <div class="meta">known account: <code>guest / guest123</code> — the console belongs to someone else.</div>
+      </div>
+    </div>
+
+    <div class="foot">RED ACCESS CTF — local challenge build</div>
+  </div>
+</body>
+</html>
